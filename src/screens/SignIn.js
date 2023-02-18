@@ -27,7 +27,7 @@ export default function SignIn() {
           <InputComponent text="Password" dummy="Password" entry={true} />
         </View>
         <View style={styles.margin}>
-          <AppButton title="Sign In" />
+          <AppButton title="Sign In" page={"TabNavigator"} />
         </View>
       </View>
     </SafeAreaView>
