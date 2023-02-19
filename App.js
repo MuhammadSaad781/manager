@@ -11,13 +11,19 @@ import TermsConditions from "./src/screens/TermsConditions";
 import PrivacyPolicy from "./src/screens/PrivacyPolicy";
 import AboutUs from "./src/screens/AboutUs";
 import ReportDetail from "./src/screens/ReportDetail";
+import SplashScreen from "./src/screens/SplashScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="SplashScreen">
+        <Stack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="MainPage"
           component={MainPage}
