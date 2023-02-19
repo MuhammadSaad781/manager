@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import IncidentReports from "../screens/IncidentReports";
@@ -9,6 +9,19 @@ import Notifications from "../screens/Notifications";
 import Settings from "../screens/Settings";
 const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
+  const [loaded, setloaded] = useState(false);
+
+  const loadfonts = async () => {
+    await Font.loadAsync({
+      CircularStd: require("../../assets/CircularStd.ttf"),
+      "CircularStd-Bold": require("../../assets/CircularStd-Bold.otf"),
+      Montserrat: require("../../assets/Montserrat.ttf"),
+    });
+    setloaded(true);
+  };
+  useEffect(() => {
+    loadfonts();
+  }, []);
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -28,6 +41,9 @@ export default function TabNavigator() {
         },
         tabBarActiveTintColor: "#246BFD",
         tabBarInactiveTintColor: "gray",
+        tabBarLabelStyle: {
+          fontFamily: "CircularStd",
+        },
       })}
     >
       <Tab.Screen
